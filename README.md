@@ -85,6 +85,19 @@ AllowedIPs = 10.106.28.2/32
 
 Then restart the instance with `reboot` command.
 
+### Port forwarding
+
+If you want to forward specific ports to a client, then you can add the following to `wg0.conf`:
+
+```
+PostUp = iptables -t nat -A PREROUTING -i ens5 -p tcp --dport 35220 -j DNAT --to-destination 10.106.28.2
+PostDown = iptables -t nat -D PREROUTING -i ens5 -p tcp --dport 35220 -j DNAT --to-destination 10.106.28.2
+```
+
+Where `35220` is the port you want to forward, and `10.106.28.2` is the client.
+
+After editing you need to restart the wg0 service by running `systemctl restart wg-quick@wg0.service`.
+
 ## Set up client config
 
 ```
