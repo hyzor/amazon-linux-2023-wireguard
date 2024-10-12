@@ -91,7 +91,6 @@ Then restart the instance with `reboot` command.
 [Interface]
 PrivateKey = CLIENT_PRIVATE_KEY
 Address = 10.106.28.2/32
-DNS = 1.1.1.1
 
 [Peer]
 PublicKey = SERVER_PUBLIC_KEY
