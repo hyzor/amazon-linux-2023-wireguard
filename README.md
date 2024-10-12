@@ -122,9 +122,15 @@ Set `SERVER_PORT` to `ListenPort` value in server config.
 ## Allow new clients
 
 ```shell
-sudo wg set wg0 peer CLIENT_PUBLIC_KEY allowed-ips CLIENT_IP
+wg set wg0 peer CLIENT_PUBLIC_KEY allowed-ips CLIENT_IP
 ```
 
 If you use Windows and have the official WireGuard client then `CLIENT_PUBLIC_KEY` will be automatically generated for you.
 
 Replace `CLIENT_IP` with e.g. `10.106.28.2`.
+
+## Remove clients
+
+```shell
+wg set wg0 peer CLIENT_PUBLIC_KEY remove
+```
