@@ -73,8 +73,8 @@ Set `wg0.conf` content to:
 [Interface]
 Address = 10.106.28.1/32
 SaveConfig = true
-PostUp = iptables -t nat -A POSTROUTING -o ens5 -j MASQUERADE
-PostDown = iptables -t nat -D POSTROUTING -o ens5 -j MASQUERADE
+PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o ens5 -j MASQUERADE
+PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o ens5 -j MASQUERADE
 ListenPort = 51820
 PrivateKey = SERVER_PRIVATE_KEY
 
