@@ -98,6 +98,8 @@ Where `35220` is the port you want to forward, and `10.106.28.2` is the client.
 
 After editing you need to restart the wg0 service by running `systemctl restart wg-quick@wg0.service`.
 
+Remember to add a new inbound rule to the EC2 instance for every new port.
+
 ## Set up client config
 
 ```
